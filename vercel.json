@@ -1,1 +1,13 @@
-
+{
+  "version": 2,
+  "builds": [{ "src": "**/*.py", "use": "@vercel/python" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/$1.py"
+    }
+  ],
+  "env": {
+    "MY_CUSTOM_ENVIRONMENT_VARIABLE": "value"
+  }
+}
