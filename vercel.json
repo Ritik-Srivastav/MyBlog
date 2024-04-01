@@ -1,13 +1,20 @@
 {
   "version": 2,
-  "builds": [{ "src": "**/*.py", "use": "@vercel/python" }],
-  "routes": [
+  "builds": [
     {
-      "src": "/(.*)",
-      "dest": "/api/$1.py"
+      "src": "./index.py",
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.9" }
     }
   ],
-  "env": {
-    "MY_CUSTOM_ENVIRONMENT_VARIABLE": "value"
-  }
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
